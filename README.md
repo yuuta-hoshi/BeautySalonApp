@@ -1,2 +1,16 @@
+## 開発経緯 
+友人が美容室の経営をしており、自店舗で使用できるポイント加算アプリを試しに作成してほしいという要望で作成しました。
+
+## アプリの要約
+追加用のQRコードを読み取ることで、ポイントが加算するようにしました。
+また、たまったポイントで商品と交換できる機能も作成しました。
+商品の交換は、交換したい商品のQRコードを読み取ることでポイントと交換できます。
+
+## 使用技術 
+| 環境 | 言語 | DB |
+|:---:|:---:|:---:|
+| Xcode | Swift | Realm Swift |
+
 **下記のファイルに、画面の遷移図とアプリーションで使用するQRコードが入っております。**
-#### [BeautySalonAPP画面遷移図.xlsx](https://github.com/yuuta-hoshi/BeautySalonApp/files/10436229/BeautySalonAPP.xlsx) 
+
+**[BeautySalonAPP画面遷移図.xlsx](https://github.com/yuuta-hoshi/BeautySalonApp/files/10436229/BeautySalonAPP.xlsx)**
