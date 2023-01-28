@@ -8,23 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @State var selectedTag = 1
     var body: some View {
-        HomeView()
-//        TabView(selection: $selectedTag){
-//            HomeView().tabItem {
-//                Image(systemName: "house")
-//                Text("ホーム")
-//            }.tag(1)
-//            HomeView().tabItem {
-//                Image(systemName: "plus.app")
-//                Text("ポイント追加")
-//            }.tag(2)
-//            ChangePointListView().tabItem {
-//                Image(systemName: "repeat")
-//                Text("ポイント交換")
-//            }.tag(3)
-//        }
+        TabView(selection: $selectedTag){
+            HomeView().tabItem {
+                Image(systemName: "house")
+                Text("ホーム")
+            }.tag(1)
+            ShopMapView().tabItem {
+                Image(systemName: "map")
+                Text("アクセス")
+            }.tag(2)
+        }
     }
 }
 

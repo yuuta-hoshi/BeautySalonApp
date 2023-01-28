@@ -23,72 +23,79 @@ struct HomeView: View{
     }
     
     var body: some View {
-        VStack{
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.gray)
-                    .frame(
-                        width: PointCardViewWidth,
-                        height: PointCardViewHeight
-                )
+        ZStack{
+            Color.white
+            VStack{
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(.white)
+                        .foregroundColor(.gray)
                         .frame(
-                            width: PointCardViewWidth * 0.97,
-                            height: PointCardViewHeight * 0.95
-                        )
-                    VStack {
-                        Text("現在のポイント")
-                            .font(.system(size: 30))
-                            .foregroundColor(Color.black)
-                        HStack{
-                            Text(String(self.viewModel.point))
-                                .font(.system(size: 28))
-                                .foregroundColor(Color.red)
-                            Text("P")
-                                .font(.system(size: 28))
+                            width: PointCardViewWidth,
+                            height: PointCardViewHeight
+                    )
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(.white)
+                            .frame(
+                                width: PointCardViewWidth * 0.97,
+                                height: PointCardViewHeight * 0.95
+                            )
+                        VStack {
+                            Text("現在のポイント")
+                                .font(.system(size: 30))
                                 .foregroundColor(Color.black)
+                            HStack{
+                                Text(String(self.viewModel.point))
+                                    .font(.system(size: 28))
+                                    .foregroundColor(Color.red)
+                                Text("P")
+                                    .font(.system(size: 28))
+                                    .foregroundColor(Color.black)
+                            }
                         }
+                        
                     }
-                    
                 }
-            }.shadow(radius: 5)
-            Spacer()
-            Button(action: {
-                viewModel.isShowing = true
-            }){
-                HStack{
-                    Image(systemName: "plus.app")
-                    Text("ポイント追加")
-                        .font(.system(size: 22))
+                .padding(.top)
+                .shadow(radius: 5)
+                Spacer()
+                Button(action: {
+                    viewModel.isShowing = true
+                }){
+                    HStack{
+                        Image(systemName: "plus.app")
+                        Text("ポイント追加")
+                            .font(.system(size: 22))
+                    }
+                    .padding()
+                    .accentColor(Color.white)
+                    .background(Color.red)
+                    .cornerRadius(25)
                 }
-                .padding()
-                .accentColor(Color.white)
-                .background(Color.red)
-                .cornerRadius(25)
-            }
-            .fullScreenCover(isPresented: $viewModel.isShowing) {
-                SecondView(viewModel: viewModel)
-            }
-            Button(action: {
-                viewModel.changePointScreen = true
-            }){
-                HStack{
-                    Image(systemName: "repeat")
-                    Text("ポイント交換")
-                        .font(.system(size: 22))
+                .fullScreenCover(isPresented: $viewModel.isShowing) {
+                    SecondView(viewModel: viewModel)
                 }
-                .padding()
-                .accentColor(Color.white)
-                .background(Color.blue)
-                .cornerRadius(25)
+                Button(action: {
+                    viewModel.changePointScreen = true
+                }){
+                    HStack{
+                        Image(systemName: "repeat")
+                        Text("ポイント交換")
+                            .font(.system(size: 22))
+                    }
+                    .padding()
+                    .accentColor(Color.white)
+                    .background(Color.blue)
+                    .cornerRadius(25)
+                }
+                .padding(.bottom,10)
+                .fullScreenCover(isPresented: $viewModel.changePointScreen) {
+                    ChangePointListView()
+                }
+                
             }
-            .fullScreenCover(isPresented: $viewModel.changePointScreen) {
-                ChangePointListView()
-            }
-            Spacer()
         }
+
     }
 }
 
